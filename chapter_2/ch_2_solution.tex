@@ -1,0 +1,172 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}   % 设置页边距
+\usepackage{amsmath, amssymb}       % 数学符号与公式
+\usepackage{enumitem}               % 自定义列表
+\usepackage{unicode-math}
+\usepackage[english]{babel}         % 设置整个文档为英文
+
+% 标题与作者信息（可自行修改）
+\title{Solution for Chapter 2}
+\author{Zimo Guo}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+% 使用 \noindent 去掉段落缩进，让题号更清晰
+\noindent \textbf{2.1}
+
+\begin{enumerate}[label=(\alph*), left=0pt] % left=0pt 使子题与题号对齐
+    \item 
+    From standard PAC to 2-oracle PAC: D in standard PAC is any distribution. So for $D_{+}$ and 
+    $D_{-}$, P is less than or equal to $\epsilon$. It's PAC-learnable in 2-oracle PAC model 
+    obviously.
+
+    \item 
+    From 2-oracle PAC to standard PAC: The probability of standard PAC is
+    \begin{align*}
+        P[y \ne h(x)] &= P[(y = 1 \land h(x) = 0) \lor (y = 0 \land h(x) = 1)] \\
+        &\le P[(y = 1 \land h(x) = 0)] + P[(y = 0 \land h(x) = 1)] \\
+        &\le 2\epsilon
+    \end{align*}
+
+    $\epsilon$ is any positive number, so $P[y \ne h(x)] \le \epsilon$.
+\end{enumerate}
+
+\vspace{1em}  % 题目之间的垂直间距
+
+\noindent \textbf{2.4}
+
+This solution doesn't work. For non-concentric cycle, the $h_{s}$ we get by training 
+sample $S$ may has a translation from the ideal hypothesis $c_{0}$. If the area of 
+$h_{s}$ is equal to $\pi r^2 - \epsilon$, that is, its area is equal to the small
+cycle in figure 2.5(b). In the case of figure 2.5(b), $h_{s}$ move to the right top
+direction of $c_{0}$. Now three regions both have points locate in $h_{s}$. According
+to Gertrude's solution, the error of $h_{s}$ should less than $\epsilon$. But it's 
+impossible obviously by the figure 2.5(b).
+
+
+\vspace{1em}
+
+\noindent \textbf{2.6}
+
+\begin{enumerate}[label=(\alph*), left=0pt] 
+    \item 
+    Using the same notation in example 2.4, we still set four regions in the rectangle. 
+    Now some point will filp, while the sum of the area of the error should still be $\epsilon$.
+    Some points in $h_{s}$ will contribute, so every region should have $(\epsilon - \epsilon _{0}) 
+    / 4$, where $\epsilon _{0}$ is the error of flipped points. Number of flipped points is less 
+    than $m$, so $\epsilon _{0} \le \epsilon \eta$.
+
+    Use the same process in example 2.4, 
+    \begin{align*}
+        P[R(R_{0}^{'}) > \epsilon] &\le 4 (1 - \frac{\epsilon - \epsilon _{0}}{4}) ^{m} \\
+        &= 4 (1 - \frac{\epsilon (1 - \eta)}{4}) ^{m} \\
+        &\le 4 \exp \{- \frac{m \epsilon (1 - \eta)}{4} \} \\
+        &\le 4 \exp \{- \frac{m \epsilon (1 - \eta ^{'})}{4} \} \\
+    \end{align*}
+
+    Let $\delta$ greater than or equal to the right side, get 
+    \begin{align*}
+        m \ge \frac{4}{\epsilon (1 - \eta ^{'})} \log \frac{4}{\delta}
+    \end{align*}
+    
+\end{enumerate}
+
+\vspace{1em}
+
+\noindent \textbf{2.7}
+
+\begin{enumerate}[label=(\alph*), left=0pt] 
+    \item 
+    $d(h)$ is the probability that the true label be different from the predict label given
+    by $d(h)$. So $d(h ^{*})$ is the probability of filpping, which is $\eta$.
+
+    \item 
+    For $R(h)$, the point which has true label 1 will be labelled 0, so $P_{1} = R(h) (1 - \eta)$.
+    For area inside $h$, the point which has true label 0 will be labelled 1, so $P_{2} = 
+    (1 - R(h)) \eta$. So $d(h) = P_{1} + P_{2} = \eta + (1 - 2 \eta) R(h)$.
+
+    \item 
+    \begin{align*}
+        d(h) - d(h ^{*}) &= \eta + (1 - 2 \eta) R(h) - \eta \\
+        &= (1 - 2 \eta) R(h) \\
+        &\ge (1 - 2 \eta) \epsilon \\ 
+        &\ge \epsilon (1 - 2 \eta ^{'}) \\
+        &= \epsilon ^{'}
+    \end{align*}
+
+    \item 
+    Let $Z = 1 _{y \ne h ^{*}(x)}$, then $\hat{d}(h^{*}) = (1 / m) \sum_{i=1}^{m} 1 _{y_{i} \ne h
+    ^{*} (x_{i})}$. $\hat{d}$ denotes the fraction and $d$ denotes the probability, so $d(h^{*}) = 
+    E[\hat{d}(h^{*})]$. Apply Hoeffding's inequality, 
+
+    \begin{align*}
+        P[\hat{d}(h^{*}) - d(h^{*}) \ge t] &= P[(1 / m) \sum Z_{i} - E[\hat{d}(h^{*})] \ge t] \\
+        &= P[\sum Z_{i} - m E[\hat{d}(h^{*})] \ge mt] \\
+        &\le \exp \{-2m t^{2}\} \\
+    \end{align*}
+    
+    Let $t = \frac{\epsilon^{'}}{2}$, 
+    \begin{align*}
+        P &\le \exp \{-\frac{m \epsilon^{'2}}{2}\} \\
+        &\le \frac{\delta}{2} \\
+    \end{align*}
+
+    So 
+    \begin{align*}
+        P[\hat{d}(h^{*}) - d(h^{*}) \ge \frac{\epsilon^{'}}{2}] \le \frac{\delta}{2}
+    \end{align*}, that is 
+
+    \begin{align*}
+        P[\hat{d}(h^{*}) - d(h^{*}) \le \frac{\epsilon^{'}}{2}] \ge 1 - \frac{\delta}{2} 
+    \end{align*}
+
+    \item 
+    Similar to (4), we want to prove 
+    \begin{align*}
+        P[E[\hat{d} (h)] - \frac{1}{m} \sum Z_{i} \ge \frac{\epsilon ^{'}}{2}] \le \frac{\delta}{2}
+    \end{align*}
+
+    According to Hoeffding's inequality, 
+    \begin{align*}
+        left side &= P[\sum Z_{i} - m E[\hat{d} (h)] \le \frac{-m \epsilon ^{'}}{2}] \\
+        &\le \exp\{-\frac{m \epsilon^{'2}}{2}\} \\
+        &\le \frac{1}{|\mathcal{H}|} \frac{\delta}{2} \\ 
+        &\le \frac{\delta}{2}
+    \end{align*}
+
+    \item 
+    Use the inequality in (3)(4)(5), 
+
+    \begin{align*}
+        \hat{d}(h) - \hat{d}(h^{*}) 
+        &= [\hat{d}(h) - d(h)] + [d(h) - d(h^{*})] + [d(h^{*}) - \hat{d}(h^{*})] \\ 
+        &\ge -\frac{\epsilon^{'}}{2} + \epsilon^{'} - \frac{\epsilon^{'}}{2} \\
+        &= 0
+    \end{align*}
+
+    So, when $m \ge \frac{2}{\epsilon^{'}} \log \frac{2}{\delta}$, with the probability at least 
+    $1 - \frac{\delta}{2}$, $\hat{d}(h) - \hat{d}(h^{*}) \ge 0$ holds.
+
+    Because $\frac{2}{\epsilon^{'}} \log \frac{2}{\delta} \le \frac{2}{\epsilon^{'}} (
+    \log |\mathcal{H}| + \log \frac{2}{\delta})$, and $1 - \frac{\delta}{2} > 1 - \delta$, 
+    following holds,
+
+    When $m \ge \frac{2}{\epsilon^{'}} (\log |\mathcal{H}| + \log \frac{2}{\delta})$, with the 
+    probability at least $1 - \delta$, $\hat{d}(h) - \hat{d}(h^{*}) \ge 0$.
+\end{enumerate}
+
+\vspace{1em}
+
+\noindent \textbf{2.12}
+
+According to Hoeffding's inequality, $P[\hat{R_{s}}(h) - R(h) \ge \epsilon] \le \exp \{-2m
+\epsilon^{2}\}$. Let $\delta^{'} = p(h)\delta \ge$ the right side of Hoeffding's inequality.
+Then we get $\epsilon \ge \sqrt{\frac{\log \frac{1}{p(h)} + \log \frac{1}{\delta}}{2m}}$ with 
+probability at least $1 - \delta^{'}$. $1 - \delta \le 1 - \delta^{'}$, so the objective inequality
+is true.
+
+\end{document}
