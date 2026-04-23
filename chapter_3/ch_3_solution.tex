@@ -1,0 +1,139 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}   % 设置页边距
+\usepackage{amsmath, amssymb}       % 数学符号与公式
+\usepackage{enumitem}               % 自定义列表
+\usepackage{unicode-math}
+\usepackage[english]{babel}         % 设置整个文档为英文
+
+
+% 标题与作者信息（可自行修改）
+\title{Solution for Chapter 3}
+\author{Zimo Guo}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+% 使用 \noindent 去掉段落缩进，让题号更清晰
+\noindent \textbf{3.3}
+
+\begin{enumerate}[label=(\alph*), left=0pt] % left=0pt 使子题与题号对齐
+    \item 
+    From left to right, if $\{\mathcal{X}^{+} \cup \{\textbf{x}_{m+1}\}, \mathcal{X}^{-}\}$ is 
+    linearly separable, then the hyperplane is located between the negative samples and the 
+    point $\textbf{x}_{m+1}$. If $\{\mathcal{X}^{+}, \{\textbf{x}_{m+1}\} \cup \mathcal{X}^{-}\}$ 
+    is linearly separable, then the hyperplane is located in the positive samples and the point 
+    $\textbf{x}_{m+1}$. So the hyperplane is the line going though origin and $\textbf{x}_{m+1}$.
+
+    From right to left, if $\{\mathcal{X}^{+}, \mathcal{X}^{-}\}$ 
+    is linearly separable by a hyperplane going through the origin and $\textbf{x}_{m+1}$, then 
+    there exist some hyperplane located between $\textbf{x}_{m+1}$ and the negative samples and going 
+    though the origin can separate $\{\mathcal{X}^{+} \cup \{\textbf{x}_{m+1}\}\}$ and 
+    $\{\mathcal{X}^{-}\}$, and some hyperplane located between $\textbf{x}_{m+1}$ and the 
+    positive samples and going through the origin can separate $\{\mathcal{X}^{+}\}$ and 
+    $\{\{\textbf{x}_{m+1}\} \cup \mathcal{X}^{-}\}$. So they are linearly separable.
+
+    \item 
+    \begin{align*}
+        \text{Right hand side} &= 2\sum_{k=0}^{d-1} \binom{m-1}{k} + 2\sum_{k=0}^{d-2} \binom{m-1}{k} \\
+        &= 2\sum_{k=0}^{d-1} \frac{m-k}{m}\binom{m}{k} + 2\sum_{k=0}^{d-2} \frac{m-k}{m}\binom{m}{k} \\
+        &= 2[\frac{m-0}{m}\binom{m}{0} + \frac{m-1}{m}\binom{m}{1} + \frac{m-2}{m}\binom{m}{2} + \cdots + 
+        \frac{m-(d-1)}{m}\binom{m}{d-1} \\
+        &+ \frac{m-0}{m}\binom{m}{0} + \frac{m-1}{m}\binom{m}{1} + \frac{m-2}{m}\binom{m}{2} + \cdots + 
+        \frac{m-(d-2)}{m}\binom{m}{d-2}] \\
+    \end{align*}
+    
+    Compare with $C(m+1, d)$, we need to prove the following equality,
+    \begin{align*}
+        \frac{d-1}{m}\binom{m}{d-1} &= \sum_{k=0}^{d-2}\frac{m-2k}{m}\binom{m}{k} \\
+        \iff (d-1)\binom{m}{d-1} &= (m-2k)\sum_{k=0}^{d-2}\binom{m}{k}
+    \end{align*}
+
+    \item 
+    $\mathcal{\Psi}(x)$ is the vector of $f(x)$ and is the new input in the linear function. There 
+    exists m samples such that every p-subset of $\{\mathcal{\Psi}(x_{1}), \mathcal{\Psi}(x_{2}), 
+    \dots, \mathcal{\Psi}(x_{m})\}$ is linearly independent, so $\textbf{a}$ and $\mathcal{\Psi}(x)$
+    play same role with $\textbf{w}$ and $\textbf{x}$ in the formula in previous case. Use the equality
+    proved in (b), and obviously $C(m, d) > C(m, d-1)$, so the maxmium number of dichotomy is $C(m, p)$. 
+    That is $\prod_{\mathcal{F}} (m) = C(m, p) = 2 \sum_{i=0}^{p-1} \binom{m-1}{i}$.
+\end{enumerate}
+
+\vspace{1em}  % 题目之间的垂直间距
+
+\noindent \textbf{3.4}
+
+\vspace{1em}  % 题目之间的垂直间距
+
+\noindent \textbf{3.5}
+
+$\prod (\mathcal{G}, S)$ is the number of ways for $\mathcal{G}$ to label sample set $S$. So
+
+\begin{align*}
+    \Pi (\mathcal{G}, S) &= |\{(g(x_{1}), g(x_{2}), \dots, g(x_{m})), g \in \mathcal{G}\}| \\
+\end{align*}.
+
+We want to bound Rademancher complexity in terms of $\prod (\mathcal{G}, S)$, so we need to represent
+it in terms of the elements in $(g(x_{1}), g(x_{2}), \dots, g(x_{m}))$. Let $(g_{j}(x_{1}), g_{j}(x_{2}), 
+\dots, g_{j}(x_{m}))$ be $d_{j}$, and use Massart's lemma, 
+
+\begin{align*}
+    \mathfrak{R}_{m}(\mathcal{G}) &= E_{S}[E_{\sigma}[\frac{\sup\limits_{g \in \mathcal{G}} \sum_{i=1}^{m} \sigma_{i} g(x_{i})}{m}]] \\
+    &= E_{S}[E_{\sigma}[\frac{1}{m} \sup\limits_{d \in \textbf{b}} \boldsymbol{\sigma} \mathbf{d}]] \\
+    &\le E_{S}[\sqrt{\frac{2 \log \Pi (\mathcal{G}, S)}{m}}]
+\end{align*}
+
+\vspace{1em}  % 题目之间的垂直间距
+
+\noindent \textbf{3.6}
+
+\begin{enumerate}[label=(\alph*), left=0pt] 
+    \item 
+    \begin{align*}
+        \mathfrak{R}_{m}(\mathcal{G}) &= E_{S}[E_{\sigma}[\frac{\sup \sum \limits_{i=1}^{m} 
+            \sigma_{i} g(x_{i})}{m}]] \\
+        &= E_{S}[E_{\sigma}[\sigma \mathbf{g}]] \\
+        &= E_{S}[E_{\sigma}[\sigma] E_{\sigma} [\mathbf{g}]]
+    \end{align*}
+
+    Because $\sigma$ is sequence of random variables valued -1 or 1, its expectation is zero
+    vector. So $\mathfrak{R}_{m}(\mathcal{G}) = 0$ for singleton hypothesis set.
+
+    \item
+
+\end{enumerate}
+
+\vspace{1em}  % 题目之间的垂直间距
+
+\noindent \textbf{3.8}
+
+\begin{enumerate}[label=(\alph*), left=0pt]
+    \item 
+    \begin{align*}
+        \mathfrak{R}_{m}(\mathcal{H}) &= E_{S}[E_{\sigma}[\frac{\sup \limits_{\alpha h \in \alpha\mathcal{H}}
+            \sum \limits_{i=1}^{m} \sigma_{i} h(x_{i})}{m}]] \\
+        &= E_{S}[E_{\sigma}[\frac{|\alpha| \sup \limits_{\alpha h \in \alpha\mathcal{H}}
+            \sum \limits_{i=1}^{m} \sigma_{i} h(x_{i})}{m}]] \\
+        &= E_{S}[|\alpha| E_{\sigma}[\frac{\sup \limits_{\alpha h \in \alpha\mathcal{H}}
+            \sum \limits_{i=1}^{m} \sigma_{i} h(x_{i})}{m}]] \\
+        &= |\alpha| E_{S}[E_{\sigma}[\frac{\sup \limits_{\alpha h \in \alpha\mathcal{H}}
+            \sum \limits_{i=1}^{m} \sigma_{i} h(x_{i})}{m}]] \\
+        &= |\alpha| \mathfrak{R}_{m}(\mathcal{H})
+    \end{align*}
+
+    \item 
+    \begin{align*}
+        \mathfrak{R}_{m}(\mathcal{H} + \mathcal{H}^{'}) &= E_{S}[E_{\sigma}[\frac{\sup \limits_{h \in \mathcal{H},
+        h^{'} \in \mathcal{H}^{'}} \sum \limits_{i=1}^{m} \sigma_{i} [h(x_{i}) + h^{'}(x_{i})]}{m}]] \\
+        &= E_{S}[E_{\sigma}[\frac{\sup \limits_{h \in \mathcal{H}}\sum \limits_{i=1}^{m} \sigma_{i} h(x_{i})}{m}]] 
+        + E_{S}[E_{\sigma}[\frac{\sup \limits_{h^{'} \in \mathcal{H^{'}}} \sum \limits_{i=1}^{m} \sigma_{i} h^{'}(x_{i})}{m}]] \\
+        &= \mathfrak{R}_{m}(\mathcal{H}) + \mathfrak{R}_{m}(\mathcal{H}^{'})
+    \end{align*}
+
+    \item 
+    
+\end{enumerate}
+
+
+\end{document}
