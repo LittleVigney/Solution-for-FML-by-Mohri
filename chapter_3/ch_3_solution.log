@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.3.20)  23 APR 2026 20:36
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.3.20)  26 APR 2026 14:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -586,7 +586,7 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
 (Font)              scaled to size 8.3991pt on input line 85.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
 (Font)              scaled to size 5.99936pt on input line 85.
- [2] [3] (./ch_3_solution.aux)
+ [2] [3] [4] (./ch_3_solution.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -601,4 +601,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  90i,14n,107p,306b,484s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ch_3_solution.pdf (3 pages).
+Output written on ch_3_solution.pdf (4 pages).

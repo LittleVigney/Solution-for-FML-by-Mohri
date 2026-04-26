@@ -132,8 +132,50 @@ it in terms of the elements in $(g(x_{1}), g(x_{2}), \dots, g(x_{m}))$. Let $(g_
     \end{align*}
 
     \item 
+    If $|f(x_{1}) - f(x_{2})| \le L |x_{1} - x_{2}|$, $f(x)$ is called \textbf{L-Lipschitz function}.
+
+    To use Talagrand's lemma, we need to prove that $max(a, b)$ is L-Lipschitz function. 
+    \begin{align*}
+        |max(a_{1}, b_{1}) - max(a_{2}, b_{2})| &= \frac{1}{2} |(a_{1} - a_{2}) + (b_{1} - b_{2}) + 
+        (|a_{1} - b_{1}| - |a_{2} - b_{2}|)| \\
+        &\le \frac{1}{2} ||a_{1} - a_{2}| + |b_{1} - b_{2}| + ||a_{1} - b_{1}| - |a_{2} - b_{2}||| \\
+        &\le \frac{1}{2} ||a_{1} - a_{2}| + |b_{1} - b_{2}| + |(a_{1} - b_{1}) - (a_{2} - b_{2})|| \\
+        &= \frac{1}{2} ||a_{1} - a_{2}| + |b_{1} - b_{2}| + |(a_{1} - a_{2}) - (b_{1} - b_{2})|| \\
+        &\le \frac{1}{2} ||a_{1} - a_{2}| + |b_{1} - b_{2}| + |a_{1} - a_{2}| - |b_{1} - b_{2}|| \\
+        &= ||a_{1} - a_{2}| + |b_{1} - b_{2}|| \\
+        &= ||(a_{1}, b_{1}) - (a_{2}, b_{2})|| _{1}
+    \end{align*}
+
+    So $max(a, b)$ is 1-Lipschitz function. Then we can use Talagrand's lemma, 
+    \begin{align*}
+        \mathfrak{R}_{m}({\max(h, h^{'})})
+    \end{align*}
+\end{enumerate}
+
+\vspace{1em}  % 题目之间的垂直间距
+
+\noindent \textbf{3.9}
+
+$ h = \max(h_{1} + h_{2} - 1, 0)$, So 
+\begin{align*}
+    \hat{\mathfrak{R}}_{S}(\mathcal{H})
+    &= E[\sup \frac{\sum \sigma_{i} h(x_{i})}{m}] \\
+    &= E[\sup \frac{\sum \sigma_{i} \max(h_{1}(x_{i}) + h_{2}(x_{i}) - 1, 0)}{m}] \\
+    &\le E[\sup \frac{\sum \sigma_{i} (h_{1}(x_{i}) + h_{2}(x_{i}) - 1)}{m}] \\ 
+    &= E[\sup \frac{\sum \sigma_{i} h_{1}(x_{i})}{m}] + E[\sup \frac{\sum \sigma_{i} h_{2}(x_{i})}{m}] + 
+        E[\sup \frac{\sum \sigma_{i}}{m}] \\
+    &= \hat{\mathfrak{R}}_{S}(\mathcal{H}_{1}) + \hat{\mathfrak{R}}_{S}(\mathcal{H}_{2})
+\end{align*}
+
+\vspace{1em}  % 题目之间的垂直间距
+
+\noindent \textbf{3.11}
+
+\begin{enumerate}[label=(\alph*), left=0pt]
+    \item 
     
 \end{enumerate}
+
 
 
 \end{document}
