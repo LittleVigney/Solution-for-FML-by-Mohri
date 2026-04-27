@@ -182,7 +182,41 @@ $ h = \max(h_{1} + h_{2} - 1, 0)$, So
     \end{align*}
 
     \item 
-    
+    \begin{align*}
+        \hat{\mathfrak{R}}_{S}(\mathcal{H}) &= \frac{\Lambda^{'}}{m} E[\sup |\sum \limits_{i=1}^{m} \sigma_{i} \sigma(\mathbf{u}
+            x_{i})|] \\
+        &\le \frac{\Lambda^{'}}{m} E[\sup |\sum \limits_{i=1}^{m} \sigma_{i} \mathbf{u}x_{i}|] \\
+        &\le \frac{\Lambda^{'}}{m} E[\sup \sum \limits_{i=1}^{m} |\sigma_{i} \mathbf{u}x_{i}|] \\
+        &= \frac{\Lambda^{'}}{m} E[\sup \sum \limits_{i=1}^{m} |\mathbf{u}| |\sigma_{i} x_{i}|] \\
+        &\le \frac{\Lambda^{'} \Lambda}{m} E[\sum \limits_{i=1}^{m} \sigma_{i} x_{i}] \\
+        &= \Lambda^{'} \hat{\mathfrak{R}}_{S}(\mathcal{H^{'}})
+    \end{align*}
+
+    \item 
+    Cauchy-Schwarz inequality is following,
+    \begin{align*}
+        ||u v||_{2} \le ||u||_{2} ||v||_{2}
+    \end{align*}.
+
+    Use it in $\hat{\mathfrak{R}}_{S}(\mathcal{H^{'}})$, 
+    \begin{align*}
+        \hat{\mathfrak{R}}_{S}(\mathcal{H^{'}}) &= \frac{1}{m} E[\sup \sum \limits_{i=1}^{m} \sigma_{1} s\mathbf{u}x_{i}] \\
+        &= \frac{1}{m} E[\sup \sum \limits_{i=1}^{m} \sigma_{1} \mathbf{u}x_{i}] \\
+        &= \frac{\Lambda}{m} E[||\sum \limits_{i=1}^{m} \sigma_{i} x_{i}||_{2}]
+    \end{align*}
+
+    \item
+    \begin{align*}
+        \hat{\mathfrak{R}}_{S}(\mathcal{H^{'}}) &= \frac{\Lambda}{m} E[||\sum \limits_{i=1}^{m} \sigma_{i}x_{i}||_{2}] \\
+        &\le \frac{\Lambda}{m} \sqrt{E[||\sum \limits_{i=1}^{m} \sigma_{i}x_{i}||_{2}^{2}]}
+    \end{align*}
+
+    \item
+    Use the previous results and the inequality (3.14) in the book,
+    \begin{align*}
+        \mathfrak{R}_{m}(\mathcal{H}) &\le \hat{\mathfrak{R}}_{S}(\mathcal{H}) + \sqrt{\frac{\log \frac{2}{\delta}}{2m}} \\
+        &\le \frac{\Lambda^{'} \Lambda}{m} \sqrt{E[m r^{2}]} + \sqrt{\frac{\log \frac{2}{\delta}}{2m}}
+    \end{align*}
 \end{enumerate}
 
 
