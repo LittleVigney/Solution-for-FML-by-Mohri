@@ -219,6 +219,31 @@ $ h = \max(h_{1} + h_{2} - 1, 0)$, So
     \end{align*}
 \end{enumerate}
 
+\vspace{1em}  % 题目之间的垂直间距
+
+\noindent \textbf{3.12}
+
+\vspace{1em}  % 题目之间的垂直间距
+
+\noindent \textbf{3.14}
+
+For a hypothesis set $\mathcal{H}$, the possible most labeling results is $|\mathfrak{H}|$, 
+where every $h$ in the set give a different predict value. So in binary classification tasks,
+$2^{m} \le |\mathcal{H}|$. Get $m \le \log_{2} |\mathcal{H}|$.
+
+In another jiaodu, if VC-dimention of $\mathcal{H}$ is $\log_{2} |\mathcal{H}| + 1$, then the 
+hypothesis set should can give $2^{\log_{2} |\mathcal{H}|} = 2|\mathcal{H}|$ dichotomy, which 
+is impossible.
+
+\vspace{1em}  % 题目之间的垂直间距
+
+\noindent \textbf{3.19}
+
+If the dimention of $\mathcal{F}$ is $r$, consider a set has $m = r+1$ points, one hypothesis
+in $\mathcal{H}$ is linear dependent, that is for $x_{r+1}$, whether it is in this hypothesis
+could be judged from other $x$. So if VC-dimention of $\mathcal{H}$ is $r+1$ and $x_{r+1}$ is
+linear dependent with $x_{p}$ and $x_{q}$, $2^{r+1}$ dichotomy is impossible. So $d < r$.
+
 
 
 \end{document}
