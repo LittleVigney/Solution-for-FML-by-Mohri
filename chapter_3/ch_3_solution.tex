@@ -5,6 +5,7 @@
 \usepackage{enumitem}               % 自定义列表
 \usepackage{unicode-math}
 \usepackage[english]{babel}         % 设置整个文档为英文
+\usepackage{graphicx}
 
 
 % 标题与作者信息（可自行修改）
@@ -244,6 +245,47 @@ in $\mathcal{H}$ is linear dependent, that is for $x_{r+1}$, whether it is in th
 could be judged from other $x$. So if VC-dimention of $\mathcal{H}$ is $r+1$ and $x_{r+1}$ is
 linear dependent with $x_{p}$ and $x_{q}$, $2^{r+1}$ dichotomy is impossible. So $d < r$.
 
+\vspace{1em}  % 题目之间的垂直间距
+
+\noindent \textbf{3.20}
+
+\begin{enumerate}[label=(\alph*), left=0pt]
+    \item 
+    The GCD of the period of four function is $2\pi$. So just consider the interval $[0, 2\pi]$, 
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\textwidth]{ex3_20.png}
+        \caption{Four Sin Functions in $[0, 2\pi]$}
+        \label{fig:Exercise 3.20(a)}
+    \end{figure}
+
+    From left to right, we can find following 12 dichotomy is possible: \{+,+,+,+\}, \{+,+,+,-\}, 
+    \{+,+,-,-\}, \{+,-,-,+\}, \{+,-,+,+\}, \{+,-,+,-\}, \{-,+,-,+\}, \{-,+,-,-\}, 
+    \{-,+,+,-\}, \{-,-,+,+\}, \{-,-,-,+\}, \{-,-,-,-\}. There are 4 dichotomy that can not 
+    be realized by the sin hypothesis set. So for any $x$, points $x, 2x, 3x, 4x$ can 
+    not be shatterd.
+
+    \item 
+    doing...
+\end{enumerate}
+
+\vspace{1em}  % 题目之间的垂直间距
+
+\noindent \textbf{3.27}
+
+\begin{enumerate}[label=(\alph*), left=0pt]
+    \item 
+    For a layer, the growth function represent how many possible outputs can be get. For a
+    layer $L_{2}$, $\Pi_{L_{1}}(m)$ is possible for input, and for a fixed input, output of 
+    $L_{2}$ has $\Pi_{L_{2}}(m)$ output, so consider 2 layers, they have $\Pi_{L_{1}}(m) 
+    \Pi_{L_{2}}(m)$. So for a k layer neuron network, 
+    \begin{align*}
+        \Pi_{\mathcal{H}}(m) &= \Pi_{L_{1}}(m) \Pi_{L_{2}}(m) \dots \Pi_{L_{k}}(m)
+    \end{align*}
+
+    \item 
+    
+\end{enumerate}
 
 
 \end{document}
