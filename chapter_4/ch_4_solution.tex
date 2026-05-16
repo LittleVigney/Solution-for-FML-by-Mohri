@@ -9,7 +9,7 @@
 
 
 % 标题与作者信息（可自行修改）
-\title{Solution for Chapter 3}
+\title{Solution for Chapter 4}
 \author{Zimo Guo}
 \date{}
 
@@ -18,286 +18,60 @@
 \maketitle
 
 % 使用 \noindent 去掉段落缩进，让题号更清晰
-\noindent \textbf{3.3}
-
-\begin{enumerate}[label=(\alph*), left=0pt] % left=0pt 使子题与题号对齐
-    \item 
-    From left to right, if $\{\mathcal{X}^{+} \cup \{\textbf{x}_{m+1}\}, \mathcal{X}^{-}\}$ is 
-    linearly separable, then the hyperplane is located between the negative samples and the 
-    point $\textbf{x}_{m+1}$. If $\{\mathcal{X}^{+}, \{\textbf{x}_{m+1}\} \cup \mathcal{X}^{-}\}$ 
-    is linearly separable, then the hyperplane is located in the positive samples and the point 
-    $\textbf{x}_{m+1}$. So the hyperplane is the line going though origin and $\textbf{x}_{m+1}$.
-
-    From right to left, if $\{\mathcal{X}^{+}, \mathcal{X}^{-}\}$ 
-    is linearly separable by a hyperplane going through the origin and $\textbf{x}_{m+1}$, then 
-    there exist some hyperplane located between $\textbf{x}_{m+1}$ and the negative samples and going 
-    though the origin can separate $\{\mathcal{X}^{+} \cup \{\textbf{x}_{m+1}\}\}$ and 
-    $\{\mathcal{X}^{-}\}$, and some hyperplane located between $\textbf{x}_{m+1}$ and the 
-    positive samples and going through the origin can separate $\{\mathcal{X}^{+}\}$ and 
-    $\{\{\textbf{x}_{m+1}\} \cup \mathcal{X}^{-}\}$. So they are linearly separable.
-
-    \item 
-    \begin{align*}
-        \text{Right hand side} &= 2\sum_{k=0}^{d-1} \binom{m-1}{k} + 2\sum_{k=0}^{d-2} \binom{m-1}{k} \\
-        &= 2\sum_{k=0}^{d-1} \frac{m-k}{m}\binom{m}{k} + 2\sum_{k=0}^{d-2} \frac{m-k}{m}\binom{m}{k} \\
-        &= 2[\frac{m-0}{m}\binom{m}{0} + \frac{m-1}{m}\binom{m}{1} + \frac{m-2}{m}\binom{m}{2} + \cdots + 
-        \frac{m-(d-1)}{m}\binom{m}{d-1} \\
-        &+ \frac{m-0}{m}\binom{m}{0} + \frac{m-1}{m}\binom{m}{1} + \frac{m-2}{m}\binom{m}{2} + \cdots + 
-        \frac{m-(d-2)}{m}\binom{m}{d-2}] \\
-    \end{align*}
-    
-    Compare with $C(m+1, d)$, we need to prove the following equality,
-    \begin{align*}
-        \frac{d-1}{m}\binom{m}{d-1} &= \sum_{k=0}^{d-2}\frac{m-2k}{m}\binom{m}{k} \\
-        \iff (d-1)\binom{m}{d-1} &= (m-2k)\sum_{k=0}^{d-2}\binom{m}{k}
-    \end{align*}
-
-    \item 
-    $\mathcal{\Psi}(x)$ is the vector of $f(x)$ and is the new input in the linear function. There 
-    exists m samples such that every p-subset of $\{\mathcal{\Psi}(x_{1}), \mathcal{\Psi}(x_{2}), 
-    \dots, \mathcal{\Psi}(x_{m})\}$ is linearly independent, so $\textbf{a}$ and $\mathcal{\Psi}(x)$
-    play same role with $\textbf{w}$ and $\textbf{x}$ in the formula in previous case. Use the equality
-    proved in (b), and obviously $C(m, d) > C(m, d-1)$, so the maxmium number of dichotomy is $C(m, p)$. 
-    That is $\prod_{\mathcal{F}} (m) = C(m, p) = 2 \sum_{i=0}^{p-1} \binom{m-1}{i}$.
-\end{enumerate}
-
-\vspace{1em}  % 题目之间的垂直间距
-
-\noindent \textbf{3.4}
-
-\vspace{1em}  % 题目之间的垂直间距
-
-\noindent \textbf{3.5}
-
-$\prod (\mathcal{G}, S)$ is the number of ways for $\mathcal{G}$ to label sample set $S$. So
+\noindent \textbf{4.1}
 
 \begin{align*}
-    \Pi (\mathcal{G}, S) &= |\{(g(x_{1}), g(x_{2}), \dots, g(x_{m})), g \in \mathcal{G}\}| \\
-\end{align*}.
-
-We want to bound Rademancher complexity in terms of $\prod (\mathcal{G}, S)$, so we need to represent
-it in terms of the elements in $(g(x_{1}), g(x_{2}), \dots, g(x_{m}))$. Let $(g_{j}(x_{1}), g_{j}(x_{2}), 
-\dots, g_{j}(x_{m}))$ be $d_{j}$, and use Massart's lemma, 
+    E_{S \sim D^{m}}[\hat{R}_{S}(h_{S}^{ERM})] &= E_{S \sim D^{m}}[\inf \limits_{h \in \mathcal{H}} \hat{R}_{S}(h)] \\
+    &\le E_{S \sim D^{m}}[\hat{R}_{S}(h)], h \in \mathcal{H} \\
+    &= R(h), h \in \mathcal{H} \\
+    &\le \inf \limits_{h \in \mathcal{H}}R(h)
+\end{align*}
 
 \begin{align*}
-    \mathfrak{R}_{m}(\mathcal{G}) &= E_{S}[E_{\sigma}[\frac{\sup\limits_{g \in \mathcal{G}} \sum_{i=1}^{m} \sigma_{i} g(x_{i})}{m}]] \\
-    &= E_{S}[E_{\sigma}[\frac{1}{m} \sup\limits_{d \in \textbf{b}} \boldsymbol{\sigma} \mathbf{d}]] \\
-    &\le E_{S}[\sqrt{\frac{2 \log \Pi (\mathcal{G}, S)}{m}}]
+    E_{S \sim D^{m}}[R(h_{S}^{ERM})]
+    &\ge E_{S \sim D^{m}}[\inf\limits_{h \in \mathcal{H}}R(h)] \\
+    &= \inf\limits_{h \in \mathcal{H}}R(h) 
 \end{align*}
 
 \vspace{1em}  % 题目之间的垂直间距
 
-\noindent \textbf{3.6}
+\noindent \textbf{4.2}
 
-\begin{enumerate}[label=(\alph*), left=0pt] 
-    \item 
-    \begin{align*}
-        \mathfrak{R}_{m}(\mathcal{G}) &= E_{S}[E_{\sigma}[\frac{\sup \sum \limits_{i=1}^{m} 
-            \sigma_{i} g(x_{i})}{m}]] \\
-        &= E_{S}[E_{\sigma}[\sigma \mathbf{g}]] \\
-        &= E_{S}[E_{\sigma}[\sigma] E_{\sigma} [\mathbf{g}]]
-    \end{align*}
-
-    Because $\sigma$ is sequence of random variables valued -1 or 1, its expectation is zero
-    vector. So $\mathfrak{R}_{m}(\mathcal{G}) = 0$ for singleton hypothesis set.
-
-    \item
-
-\end{enumerate}
-
-\vspace{1em}  % 题目之间的垂直间距
-
-\noindent \textbf{3.8}
-
-\begin{enumerate}[label=(\alph*), left=0pt]
-    \item 
-    \begin{align*}
-        \mathfrak{R}_{m}(\mathcal{H}) &= E_{S}[E_{\sigma}[\frac{\sup \limits_{\alpha h \in \alpha\mathcal{H}}
-            \sum \limits_{i=1}^{m} \sigma_{i} h(x_{i})}{m}]] \\
-        &= E_{S}[E_{\sigma}[\frac{|\alpha| \sup \limits_{\alpha h \in \alpha\mathcal{H}}
-            \sum \limits_{i=1}^{m} \sigma_{i} h(x_{i})}{m}]] \\
-        &= E_{S}[|\alpha| E_{\sigma}[\frac{\sup \limits_{\alpha h \in \alpha\mathcal{H}}
-            \sum \limits_{i=1}^{m} \sigma_{i} h(x_{i})}{m}]] \\
-        &= |\alpha| E_{S}[E_{\sigma}[\frac{\sup \limits_{\alpha h \in \alpha\mathcal{H}}
-            \sum \limits_{i=1}^{m} \sigma_{i} h(x_{i})}{m}]] \\
-        &= |\alpha| \mathfrak{R}_{m}(\mathcal{H})
-    \end{align*}
-
-    \item 
-    \begin{align*}
-        \mathfrak{R}_{m}(\mathcal{H} + \mathcal{H}^{'}) &= E_{S}[E_{\sigma}[\frac{\sup \limits_{h \in \mathcal{H},
-        h^{'} \in \mathcal{H}^{'}} \sum \limits_{i=1}^{m} \sigma_{i} [h(x_{i}) + h^{'}(x_{i})]}{m}]] \\
-        &= E_{S}[E_{\sigma}[\frac{\sup \limits_{h \in \mathcal{H}}\sum \limits_{i=1}^{m} \sigma_{i} h(x_{i})}{m}]] 
-        + E_{S}[E_{\sigma}[\frac{\sup \limits_{h^{'} \in \mathcal{H^{'}}} \sum \limits_{i=1}^{m} \sigma_{i} h^{'}(x_{i})}{m}]] \\
-        &= \mathfrak{R}_{m}(\mathcal{H}) + \mathfrak{R}_{m}(\mathcal{H}^{'})
-    \end{align*}
-
-    \item 
-    If $|f(x_{1}) - f(x_{2})| \le L |x_{1} - x_{2}|$, $f(x)$ is called \textbf{L-Lipschitz function}.
-
-    To use Talagrand's lemma, we need to prove that $max(a, b)$ is L-Lipschitz function. 
-    \begin{align*}
-        |max(a_{1}, b_{1}) - max(a_{2}, b_{2})| &= \frac{1}{2} |(a_{1} - a_{2}) + (b_{1} - b_{2}) + 
-        (|a_{1} - b_{1}| - |a_{2} - b_{2}|)| \\
-        &\le \frac{1}{2} ||a_{1} - a_{2}| + |b_{1} - b_{2}| + ||a_{1} - b_{1}| - |a_{2} - b_{2}||| \\
-        &\le \frac{1}{2} ||a_{1} - a_{2}| + |b_{1} - b_{2}| + |(a_{1} - b_{1}) - (a_{2} - b_{2})|| \\
-        &= \frac{1}{2} ||a_{1} - a_{2}| + |b_{1} - b_{2}| + |(a_{1} - a_{2}) - (b_{1} - b_{2})|| \\
-        &\le \frac{1}{2} ||a_{1} - a_{2}| + |b_{1} - b_{2}| + |a_{1} - a_{2}| - |b_{1} - b_{2}|| \\
-        &= ||a_{1} - a_{2}| + |b_{1} - b_{2}|| \\
-        &= ||(a_{1}, b_{1}) - (a_{2}, b_{2})|| _{1}
-    \end{align*}
-
-    So $max(a, b)$ is 1-Lipschitz function. Then we can use Talagrand's lemma, 
-    \begin{align*}
-        \mathfrak{R}_{m}({\max(h, h^{'})})
-    \end{align*}
-\end{enumerate}
-
-\vspace{1em}  % 题目之间的垂直间距
-
-\noindent \textbf{3.9}
-
-$ h = \max(h_{1} + h_{2} - 1, 0)$, So 
 \begin{align*}
-    \hat{\mathfrak{R}}_{S}(\mathcal{H})
-    &= E[\sup \frac{\sum \sigma_{i} h(x_{i})}{m}] \\
-    &= E[\sup \frac{\sum \sigma_{i} \max(h_{1}(x_{i}) + h_{2}(x_{i}) - 1, 0)}{m}] \\
-    &\le E[\sup \frac{\sum \sigma_{i} (h_{1}(x_{i}) + h_{2}(x_{i}) - 1)}{m}] \\ 
-    &= E[\sup \frac{\sum \sigma_{i} h_{1}(x_{i})}{m}] + E[\sup \frac{\sum \sigma_{i} h_{2}(x_{i})}{m}] + 
-        E[\sup \frac{\sum \sigma_{i}}{m}] \\
-    &= \hat{\mathfrak{R}}_{S}(\mathcal{H}_{1}) + \hat{\mathfrak{R}}_{S}(\mathcal{H}_{2})
+    \Phi(u_{1}) + \Phi(u_{2}) &= (1+u_{1})^2 + (1+u_{2})^2 \\
+    &= u_{1}^2 + u_{2}^2 + 2(u_{1} + u_{2}) + 2 \\
+    &\ge \frac{1}{2} (u_{1} + u_{2})^2 + 2(u_{1} + u_{2}) + 2 \\
+    &= 2(1 + \frac{u_{1}+u_{2}}{2})^2 \\
+    &= 2\Phi(\frac{u_{1}+u_{2}}{2})
 \end{align*}
 
+So, $\Phi(u)$ is convex and non-decreasing when $u \ge -1$. Put $s=2$ and $c=\frac{1}{2}$ into
+theorem 4.7 and get the objective inequality.
+
 \vspace{1em}  % 题目之间的垂直间距
 
-\noindent \textbf{3.11}
+\noindent \textbf{4.3}
+
+$\Phi(u)$ is convex and non-decreasing when $u \ge -1$. Put $s=2$ and $c=\frac{1}{2}$ into
+theorem 4.7 and get the objective inequality.
+
+\vspace{1em}  % 题目之间的垂直间距
+
+\noindent \textbf{4.4}
 
 \begin{enumerate}[label=(\alph*), left=0pt]
     \item 
-    \begin{align*}
-        \hat{\mathfrak{R}}_{S}(\mathcal{H}) &= E[\sup \frac{\sum \limits_{i=1}^{m} \sigma_{i} \sum \limits_{j=1}^{n_{2}}
-            w_{j}\sigma (u_{j} x_{i})}{m}] \\
-        &= E[\sup \frac{\sum \limits_{j=1}^{n_{2}} w_{j} \sum \limits_{i=1}^{m} \sigma_{i}
-            \sigma(u_{j} x_{i})}{m}] \\
-        &= \frac{\Lambda^{'}}{m} E[\sup |\sum \limits_{i=1}^{m} \sigma_{i} \sigma(\mathbf{u} x_{i})|]
-    \end{align*}
+    $\eta(x) = P[y=+1 | x]$
+
+    Bayes classifier is a function that get $+1$ when $\eta(x) \ge \frac{1}{2}$, $-1$ when $\eta(x) <
+    \frac{1}{2}$. 
+
+    Bayes scoring function $h^{*}(x) = \eta(x) - \frac{1}{2}$.
 
     \item 
     \begin{align*}
-        \hat{\mathfrak{R}}_{S}(\mathcal{H}) &= \frac{\Lambda^{'}}{m} E[\sup |\sum \limits_{i=1}^{m} \sigma_{i} \sigma(\mathbf{u}
-            x_{i})|] \\
-        &\le \frac{\Lambda^{'}}{m} E[\sup |\sum \limits_{i=1}^{m} \sigma_{i} \mathbf{u}x_{i}|] \\
-        &\le \frac{\Lambda^{'}}{m} E[\sup \sum \limits_{i=1}^{m} |\sigma_{i} \mathbf{u}x_{i}|] \\
-        &= \frac{\Lambda^{'}}{m} E[\sup \sum \limits_{i=1}^{m} |\mathbf{u}| |\sigma_{i} x_{i}|] \\
-        &\le \frac{\Lambda^{'} \Lambda}{m} E[\sum \limits_{i=1}^{m} \sigma_{i} x_{i}] \\
-        &= \Lambda^{'} \hat{\mathfrak{R}}_{S}(\mathcal{H^{'}})
-    \end{align*}
-
-    \item 
-    Cauchy-Schwarz inequality is following,
-    \begin{align*}
-        ||u v||_{2} \le ||u||_{2} ||v||_{2}
-    \end{align*}.
-
-    Use it in $\hat{\mathfrak{R}}_{S}(\mathcal{H^{'}})$, 
-    \begin{align*}
-        \hat{\mathfrak{R}}_{S}(\mathcal{H^{'}}) &= \frac{1}{m} E[\sup \sum \limits_{i=1}^{m} \sigma_{1} s\mathbf{u}x_{i}] \\
-        &= \frac{1}{m} E[\sup \sum \limits_{i=1}^{m} \sigma_{1} \mathbf{u}x_{i}] \\
-        &= \frac{\Lambda}{m} E[||\sum \limits_{i=1}^{m} \sigma_{i} x_{i}||_{2}]
-    \end{align*}
-
-    \item
-    \begin{align*}
-        \hat{\mathfrak{R}}_{S}(\mathcal{H^{'}}) &= \frac{\Lambda}{m} E[||\sum \limits_{i=1}^{m} \sigma_{i}x_{i}||_{2}] \\
-        &\le \frac{\Lambda}{m} \sqrt{E[||\sum \limits_{i=1}^{m} \sigma_{i}x_{i}||_{2}^{2}]}
-    \end{align*}
-
-    \item
-    Use the previous results and the inequality (3.14) in the book,
-    \begin{align*}
-        \mathfrak{R}_{m}(\mathcal{H}) &\le \hat{\mathfrak{R}}_{S}(\mathcal{H}) + \sqrt{\frac{\log \frac{2}{\delta}}{2m}} \\
-        &\le \frac{\Lambda^{'} \Lambda}{m} \sqrt{E[m r^{2}]} + \sqrt{\frac{\log \frac{2}{\delta}}{2m}}
+        R(h) - R^{*} &= 2 E_{x \sim D_{x}}[|h^{*}(x)| \mathbb{1}_{h(x)h^{*}(x) \le 0}]
     \end{align*}
 \end{enumerate}
-
-\vspace{1em}  % 题目之间的垂直间距
-
-\noindent \textbf{3.12}
-
-\vspace{1em}  % 题目之间的垂直间距
-
-\noindent \textbf{3.14}
-
-For a hypothesis set $\mathcal{H}$, the possible most labeling results is $|\mathfrak{H}|$, 
-where every $h$ in the set give a different predict value. So in binary classification tasks,
-$2^{m} \le |\mathcal{H}|$. Get $m \le \log_{2} |\mathcal{H}|$.
-
-In another jiaodu, if VC-dimention of $\mathcal{H}$ is $\log_{2} |\mathcal{H}| + 1$, then the 
-hypothesis set should can give $2^{\log_{2} |\mathcal{H}|} = 2|\mathcal{H}|$ dichotomy, which 
-is impossible.
-
-\vspace{1em}  % 题目之间的垂直间距
-
-\noindent \textbf{3.19}
-
-If the dimention of $\mathcal{F}$ is $r$, consider a set has $m = r+1$ points, one hypothesis
-in $\mathcal{H}$ is linear dependent, that is for $x_{r+1}$, whether it is in this hypothesis
-could be judged from other $x$. So if VC-dimention of $\mathcal{H}$ is $r+1$ and $x_{r+1}$ is
-linear dependent with $x_{p}$ and $x_{q}$, $2^{r+1}$ dichotomy is impossible. So $d < r$.
-
-\vspace{1em}  % 题目之间的垂直间距
-
-\noindent \textbf{3.20}
-
-\begin{enumerate}[label=(\alph*), left=0pt]
-    \item 
-    The GCD of the period of four function is $2\pi$. So just consider the interval $[0, 2\pi]$, 
-    \begin{figure}
-        \centering
-        \includegraphics[width=0.8\textwidth]{ex3_20.png}
-        \caption{Four Sin Functions in $[0, 2\pi]$}
-        \label{fig:Exercise 3.20(a)}
-    \end{figure}
-
-    From left to right, we can find following 12 dichotomy is possible: \{+,+,+,+\}, \{+,+,+,-\}, 
-    \{+,+,-,-\}, \{+,-,-,+\}, \{+,-,+,+\}, \{+,-,+,-\}, \{-,+,-,+\}, \{-,+,-,-\}, 
-    \{-,+,+,-\}, \{-,-,+,+\}, \{-,-,-,+\}, \{-,-,-,-\}. There are 4 dichotomy that can not 
-    be realized by the sin hypothesis set. So for any $x$, points $x, 2x, 3x, 4x$ can 
-    not be shatterd.
-
-    \item 
-    doing...
-\end{enumerate}
-
-\vspace{1em}  % 题目之间的垂直间距
-
-\noindent \textbf{3.27}
-
-\begin{enumerate}[label=(\alph*), left=0pt]
-    \item 
-    For a layer, the growth function represent how many possible outputs can be get. For a
-    layer $L_{2}$, $\Pi_{L_{1}}(m)$ is possible for input, and for a fixed input, output of 
-    $L_{2}$ has $\Pi_{L_{2}}(m)$ output, so consider 2 layers, they have $\Pi_{L_{1}}(m) 
-    \Pi_{L_{2}}(m)$. So for a k layer neuron network, 
-    \begin{align*}
-        \Pi_{\mathcal{H}}(m) &= \Pi_{L_{1}}(m) \Pi_{L_{2}}(m) \dots \Pi_{L_{k}}(m)
-    \end{align*}
-
-    \item 
-    
-\end{enumerate}
-
-\vspace{1em}  % 题目之间的垂直间距
-
-\noindent \textbf{3.29}
-
-\vspace{1em}  % 题目之间的垂直间距
-
-\noindent \textbf{3.30}
-
-\vspace{1em}  % 题目之间的垂直间距
-
-\noindent \textbf{3.31}
-
 
 \end{document}
