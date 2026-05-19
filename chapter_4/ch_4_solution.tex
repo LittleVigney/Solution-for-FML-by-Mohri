@@ -19,6 +19,7 @@
 
 % 使用 \noindent 去掉段落缩进，让题号更清晰
 \noindent \textbf{4.1}
+For left side, 
 
 \begin{align*}
     E_{S \sim D^{m}}[\hat{R}_{S}(h_{S}^{ERM})] &= E_{S \sim D^{m}}[\inf \limits_{h \in \mathcal{H}} \hat{R}_{S}(h)] \\
@@ -26,6 +27,8 @@
     &= R(h), h \in \mathcal{H} \\
     &\le \inf \limits_{h \in \mathcal{H}}R(h)
 \end{align*}
+
+For right side, 
 
 \begin{align*}
     E_{S \sim D^{m}}[R(h_{S}^{ERM})]
@@ -71,6 +74,11 @@ theorem 4.7 and get the objective inequality.
     \item 
     \begin{align*}
         R(h) - R^{*} &= 2 E_{x \sim D_{x}}[|h^{*}(x)| \mathbb{1}_{h(x)h^{*}(x) \le 0}]
+    \end{align*}
+
+    \item 
+    \begin{align*}
+        R(h) - R^{*} \le [\mathcal{L}_{\Phi}(h) - \mathcal{L}_{\Phi}^{*}]^{\frac{1}{2}}
     \end{align*}
 \end{enumerate}
 

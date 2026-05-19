@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.3.20)  16 MAY 2026 17:08
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.3.20)  19 MAY 2026 20:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -347,8 +347,7 @@ File: xetex.def 2025/11/01 v5.0p Graphics/color driver for xetex
 ))
 \Gin@req@height=\dimen171
 \Gin@req@width=\dimen172
-)
-No file ch_4_solution.aux.
+) (./ch_4_solution.aux)
 \openout1 = `ch_4_solution.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
@@ -367,6 +366,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -570,17 +570,17 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 18.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.00128pt on input line 23.
+(Font)              scaled to size 12.00128pt on input line 24.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.40088pt on input line 23.
+(Font)              scaled to size 8.40088pt on input line 24.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00064pt on input line 23.
+(Font)              scaled to size 6.00064pt on input line 24.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 23.
+(Font)              scaled to size 11.99872pt on input line 24.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.3991pt on input line 23.
+(Font)              scaled to size 8.3991pt on input line 24.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 23.
+(Font)              scaled to size 5.99936pt on input line 24.
  [1
 
 ] [2] (./ch_4_solution.aux)
@@ -590,10 +590,10 @@ L3 programming layer <2026-01-19>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 10327 strings out of 468168
- 210693 string characters out of 5432815
- 796637 words of memory out of 5000000
- 38973 multiletter control sequences out of 15000+600000
+ 10330 strings out of 468168
+ 210759 string characters out of 5432815
+ 795637 words of memory out of 5000000
+ 38974 multiletter control sequences out of 15000+600000
  633032 words of font info for 83 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  90i,9n,107p,306b,504s stack positions out of 10000i,1000n,20000p,200000b,200000s
