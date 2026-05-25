@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}   % 设置页边距
+\usepackage{amsmath, amssymb}       % 数学符号与公式
+\usepackage{enumitem}               % 自定义列表
+\usepackage{unicode-math}
+\usepackage[english]{babel}         % 设置整个文档为英文
+\usepackage{graphicx}
+
+
+% 标题与作者信息
+\title{Solution for Chapter 5}
+\author{Zimo Guo}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+% 使用 \noindent 去掉段落缩进，让题号更清晰
+\noindent \textbf{5.1}
+\begin{enumerate}[label=(\alph*), left=0pt]
+    \item 
+    When $p = 2$, 
+    \begin{align*}
+        \mathcal{L}(\mathbf{W}, b, \alpha, \beta, \xi) &= \frac{1}{2}||\mathbf{w}||^2 + 
+            C\sum_{i=1}^{m} \xi_{i}^{2} - \sum_{i=1}^{m} \alpha_{i}[y_{i}(\mathbf{w}\mathbf{x}_{i} + b) - 1 + 
+            \xi_{i}] - \sum_{i=1}^{m} \beta_{i}\xi_{i}
+    \end{align*}
+
+    Setting the gradient of the Lagrangian with respect to the $\mathbf{w}, b, \xi_{i}$ is to zero, the results we got 
+    is same as (5.26), (5.27), (5.29), (5.30). (5.28) is replaced by $2C\xi_{i}=\alpha_{i} + \beta_{i}$.
+
+    \begin{align*}
+        \inf \mathcal{L} &= \frac{1}{2}||\sum_{i=1}^{m}\alpha_{i}y_{i}\mathbf{x}_{i}||^{2} + 
+            C\sum_{i=1}^{m}(\frac{\alpha_{i}+\beta_{i}}{2C})^{2} - \sum_{i=1}^{m}\alpha_{i}y_{i}b + 
+            \sum_{i=1}^{m}\alpha_{i} - \sum_{i=1}^{m}\alpha_{i}\xi_{i} - \sum_{i=1}^{m}\beta_{i}\xi_{i} - 
+            \sum_{i=1}^{m}\alpha_{i}y_{i}\mathbf{w}\mathbf{x} \\
+        &= \sum_{i=1}^{m}\alpha_{i} - \frac{1}{2}\sum_{i=1}^{m}\alpha_{i}\alpha_{j}y_{i}y_{j}\mathbf{x}_{i}\mathbf{x}_{j}
+            - \frac{1}{4}\sum_{i=1}^{m}\frac{(\alpha_{i} + \beta_{i})^{2}}{C}
+    \end{align*}
+
+    \item 
+    Yes, this problem is still convex because the first two items are convex, and $-\frac{1}{4}\sum_{i=1}^{m}\frac{(\alpha_{i} + \beta_{i})^{2}}{C}$ is 
+    concave but we can use convec techniques to solve it.
+\end{enumerate}
+
+\vspace{1em}  % 题目之间的垂直间距
+
+\noindent \textbf{5.2}
+
+\vspace{1em}  % 题目之间的垂直间距
+
+\noindent \textbf{5.3}
+
+
+
+\end{document}
