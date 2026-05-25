@@ -53,6 +53,22 @@
 
 \noindent \textbf{5.3}
 
+Add weight to Lagrangian, geo 
+
+\begin{align*}
+    \mathcal{L}(\mathbf{W}, b, \alpha, \beta, \xi) &= \frac{1}{2}||\mathbf{w}||^2 + 
+        C\sum_{i=1}^{m} \xi_{i}p_{i} - \sum_{i=1}^{m} \alpha_{i}[y_{i}(\mathbf{w}\mathbf{x}_{i} + b) - 1 + 
+        \xi_{i}] - \sum_{i=1}^{m} \beta_{i}\xi_{i}
+\end{align*}
+
+For gradient, (5.26)(5.27)(5.29)(5.30) is same as regular case. (5.28) is replaced with $Cp_{i} - 
+\alpha_{i} - \beta_{i}$. Put them into Lagrangian, get the same result with regular case.
+
+\begin{align*}
+    \inf \mathcal{L} &= \sum_{i=1}^{m}\alpha_{i} - \frac{1}{2}\sum_{i=1}^{m}\alpha_{i}\alpha_{j}y_{i}y_{j}\mathbf{x}_{i}\mathbf{x}_{j}
+\end{align*}
+
+The constraint condition is $\sum_{i=1}^{m}\alpha_{i}y_{i}=0 \wedge 0 \le \alpha_{i}, \beta_{i} \le Cp_{i}$
 
 
 \end{document}
