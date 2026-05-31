@@ -3,7 +3,7 @@
 \usepackage[margin=1in]{geometry}   % 设置页边距
 \usepackage{amsmath, amssymb}       % 数学符号与公式
 \usepackage{enumitem}               % 自定义列表
-\usepackage{unicode-math}
+% \usepackage{unicode-math} % removed: requires XeLaTeX/LuaLaTeX; keep file pdflatex-friendly
 \usepackage[english]{babel}         % 设置整个文档为英文
 \usepackage{graphicx}
 
@@ -69,6 +69,115 @@ For gradient, (5.26)(5.27)(5.29)(5.30) is same as regular case. (5.28) is replac
 \end{align*}
 
 The constraint condition is $\sum_{i=1}^{m}\alpha_{i}y_{i}=0 \wedge 0 \le \alpha_{i}, \beta_{i} \le Cp_{i}$
+
+\vspace{1em}  % 题目之间的垂直间距
+
+\noindent \textbf{5.4}
+
+\begin{enumerate}[label=(\alph*), left=0pt]
+    \item 
+    \begin{align*}
+        Equation (5.33) &= \alpha_{1}+\alpha_{2}+\sum_{i=3}^{m}\alpha_{i} \\
+        &- \frac{1}{2}[\alpha_{1}\alpha_{1}y_{1}y_{1}(\textbf{x}_{1})\textbf{x}_{1} 
+        + \alpha_{1}\alpha_{2}y_{1}y_{2}(\textbf{x}_{1}\textbf{x}_{2}) 
+        + \sum_{i=3}^{m}\alpha_{1}\alpha_{i}y_{1}y_{i}(\textbf{x}_{1}\textbf{x}_{i}) \\
+        &+ \alpha_{2}\alpha_{1}y_{2}y_{1}(\textbf{x}_{2}\textbf{x}_{1}) 
+        + \alpha_{2}\alpha_{2}y_{2}y_{2}(\textbf{x}_{2}\textbf{x}_{2}) 
+        + \sum_{i=3}^{m}\alpha_{2}\alpha_{i}y_{2}y_{i}(\textbf{x}_{2}\textbf{x}_{i})] \\
+        &= \alpha_{1}+\alpha_{2}-\frac{1}{2}K_{11}\alpha_{1}^{2}-\frac{1}{2}K_{22}\alpha_{2}^{2}-sK_{12}\alpha_{1}\alpha_{2}-y_{1}\alpha_{1}v_{1}-y_{2}\alpha_{2}v_{2}
+    \end{align*}
+
+    For constraint condition, \\
+    \begin{align*}
+        0 = \sum_{i=1}^{m}\alpha_{i}y_{i} &= \alpha_{1}y_{1}+\alpha_{2}y_{2}+\sum_{i=3}^{m}\alpha_{i}y_{i} \\
+        &= \alpha_{1}y_{1}^{2}+\alpha_{2}y_{2}y_{1}+y_{1}\sum_{i=3}^{m}\alpha_{i}y_{i} \\
+        &= \alpha_{1} + s\alpha_{2} + \gamma = 0
+    \end{align*}
+\end{enumerate}
+
+\vspace{1em}  % 题目之间的垂直间距
+
+\noindent \textbf{5.6}
+
+\begin{enumerate}[label=(\alph*), left=0pt]
+    \item First item in original optimization problem is $||\mathbf{w}||^{2}$, 
+        \begin{align*}
+            ||\mathbf{w}||^{2} &= ||\sum_{i=1}^{m}\alpha_{i}y_{i}\mathbf{x}_{i}||^{2} \\
+            &= (\alpha_{1}y_{1}\mathbf{x}_{1}+\alpha_{2}y_{2}\mathbf{x}_{2}+\dots+\alpha_{m}y_{m}\mathbf{x}_{m})(\alpha_{1}y_{1}\mathbf{x}_{1}+\alpha_{2}y_{2}\mathbf{x}_{2}+\dots+\alpha_{m}y_{m}\mathbf{x}_{m})
+        \end{align*}
+        
+        To make above equation equal to $\sum_{i=1}^{m}\alpha_{i}^{2}$, following should holds 
+        \begin{align*}
+            \mathbf{x}_{i}\mathbf{x}_{j} = 0, i \ne j
+        \end{align*}.
+
+    \item 
+    \begin{align*}
+        &L=\frac{1}{2}\sum_{i=1}^{m}\alpha_{i}^{2}+C\sum_{i=1}^{m}\xi_{i}-\sum_{i=1}^{m}\beta_{i}\cdot[y_{i}(\sum_{j=1}^{m}\alpha_{j}y_{j}\textbf{x}_{i}\cdot \textbf{x}_{j}+b)-1+\xi_{i}]-\sum_{i=1}^{n}\gamma_{i}\xi_{i}-\sum_{i=1}^{m}\varepsilon_{i}\alpha_{i} \\
+        &\text{KKT condition:} \\
+        & \nabla_{\alpha_{i}}L=\alpha_{i} - \sum_{j=1}^{m}\beta_{j}y_{j}y_{i}\textbf{x}_{i}\textbf{x}_{j}-\varepsilon_{i}=0 \\
+        &\nabla_{b}L=\sum_{i=1}^{m}\beta_{i}\cdot y_{i}=0 \\
+        &\nabla_{\xi_{i}}L=C-\beta_{i}-\gamma_{i}=0 \\
+        &\beta_{i}[y_{i}(\sum_{j=1}^{m}\alpha_{j}y_{j}\textbf{x}_{i}\textbf{x}_{j}+b)-1+\xi_{i}]=0 \\
+        &\gamma_{i}\cdot\xi_{i}=0 \\
+        &\varepsilon_{i}\cdot\alpha_{i}=0
+    \end{align*}
+
+    \item 
+    \begin{align*}
+        &L=\sum_{i=1}^{m}||\alpha_{i}||+C\sum_{i=1}^{m}\xi_{i}-\sum_{i=1}^{m}\beta_{i}\cdot[y_{i}(\sum_{j=1}^{m}\alpha_{j}y_{j}\textbf{x}_{i}\cdot \textbf{x}_{j}+b)-1+\xi_{i}]-\sum_{i=1}^{n}\gamma_{i}\xi_{i}-\sum_{i=1}^{m}\varepsilon_{i}\alpha_{i} \\
+        &\text{KKT condition:} \\
+        & \nabla_{\alpha_{i}}L=1 - \sum_{j=1}^{m}\beta_{j}y_{j}y_{i}\textbf{x}_{i}\textbf{x}_{j}-\varepsilon_{i}=0 \\
+        &\nabla_{b}L=\sum_{i=1}^{m}\beta_{i}\cdot y_{i}=0 \\
+        &\nabla_{\xi_{i}}L=C-\beta_{i}-\gamma_{i}=0 \\
+        &\beta_{i}[y_{i}(\sum_{j=1}^{m}\alpha_{j}y_{j}\textbf{x}_{i}\textbf{x}_{j}+b)-1+\xi_{i}]=0 \\
+        &\gamma_{i}\cdot\xi_{i}=0 \\
+        &\varepsilon_{i}\cdot\alpha_{i}=0
+    \end{align*}
+\end{enumerate}
+
+
+\vspace{1em}  % 题目之间的垂直间距
+
+\noindent \textbf{5.7}
+
+\begin{enumerate}[label=(\alph*), left=0pt]
+    \item 
+    Because ${\textbf{x}_{1}, \dots, \textbf{x}_{d}}$ can be shattered, there always exists
+    $\mathbf{w}$ which can holds $\mathbf{w}\mathbf{x}_{x}=y_{i}$. 
+
+    \begin{align*}
+        1 &\le |\mathbf{w}\mathbf{x}_{i}| \\
+        &= |\mathbf{w}y_{i}\mathbf{x}_{i}| \\
+        &= \mathbf{w}y_{i}\mathbf{x}_{i}
+    \end{align*}
+
+    Add above for $i = 1, \dots, d$, get
+
+    \begin{align*}
+        d &\le \sum_{i=1}^{d}\mathbf{w}y_{i}\mathbf{x}_{i} \\
+        &\le \mathbf{w}\sum_{i=1}^{d}y_{i}\mathbf{x}_{i} \\
+        d &\le ||\mathbf{w}|| ||\sum_{i=1}^{m}y_{i}\mathbf{x}_{i}|| \\
+        &\le \Lambda||\sum_{i=1}^{m}y_{i}\mathbf{x}_{i}|| 
+    \end{align*}
+
+    \item 
+    According to Jesen's inequality, $E(x)^{2} \le E(x^{2})$, so $E(x) \le \sqrt{E(x^{2})}$.
+
+    \begin{align*}
+        d &\le \Lambda E[||\sum_{i=1}^{m}y_{i}\mathbf{x}_{i}||] \\
+        &\le \Lambda \sqrt{E[||\sum_{i=1}^{m}y_{i}\mathbf{x}_{i}||^{2}]} \\
+        &= \Lambda \sqrt{\sum_{i=1}^{d}||\mathbf{x}_{i}||^{2}}
+    \end{align*}
+
+    \item 
+    \begin{align*}
+        d &\le \Lambda \sqrt{\sum_{i=1}^{d}||\mathbf{x}_{i}||^{2}} \\
+        &\le \Lambda \sqrt{dr^{2}} \\
+    \end{align*}
+
+    Solve the inequality, get $d \le r^{2}\Lambda^{2}$.
+\end{enumerate}
 
 
 \end{document}
