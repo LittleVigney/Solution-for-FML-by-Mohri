@@ -81,20 +81,24 @@ impossible obviously by the figure 2.5(b).
 
 \begin{enumerate}[label=(\alph*), left=0pt] 
     \item 
-    $d(h)$ is the probability that the true label be different from the predict label given
-    by $d(h)$. So $d(h ^{*})$ is the probability of filpping, which is $\eta$.
+    $h^{*}$ can give all correct predictions, so all $h^{*}(x_{i})$ is equal to labels that randomly
+    filpping has happend. Compare these with labels received by learners, all differences are
+    caused by flipping. So the probability that the label of a training point received by 
+    the learner disagrees with the one given by $h^{*}$ is equal to the probability that 
+    randomly filpping happen. That is $d(h^{*})=\eta$.
 
     \item 
-    For $R(h)$, the point which has true label 1 will be labelled 0, so $P_{1} = R(h) (1 - \eta)$.
-    For area inside $h$, the point which has true label 0 will be labelled 1, so $P_{2} = 
-    (1 - R(h)) \eta$. So $d(h) = P_{1} + P_{2} = \eta + (1 - 2 \eta) R(h)$.
+    $d(h)$ could be contributed by two possible cases, one is filpping and correct prediction, 
+    another is no filpping and wrong prediction. The probability of filpping is $\eta$, correct
+    prediction is $1 - R(h)$. The probability of no filpping is $1 - \eta$, wrong prediction is 
+    $R(h)$. Compute probability of two parts and sum them then get the target.
 
     \item 
     \begin{align*}
         d(h) - d(h ^{*}) &= \eta + (1 - 2 \eta) R(h) - \eta \\
         &= (1 - 2 \eta) R(h) \\
         &\ge (1 - 2 \eta) \epsilon \\ 
-        &\ge \epsilon (1 - 2 \eta ^{'}) \\
+        &\ge \epsilon (1 - 2 \eta ^{'}) \\ 
         &= \epsilon ^{'}
     \end{align*}
 
